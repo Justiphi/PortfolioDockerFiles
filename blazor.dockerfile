@@ -38,8 +38,8 @@ COPY --from=build /app/efbundle .
 COPY entrypoint.sh .
 RUN chmod +x entrypoint.sh efbundle
 
-ENV ASPNETCORE_URLS=http://+:8000
-EXPOSE 8000
+ENV ASPNETCORE_URLS=http://+:5000
+EXPOSE 5000
 
 ENTRYPOINT ["./entrypoint.sh"]
 CMD ["dotnet", "BlazorPortfolio.dll"]
