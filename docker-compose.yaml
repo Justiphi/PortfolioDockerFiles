@@ -1,0 +1,28 @@
+services:
+  blazor-portfolio:
+    build:
+      context: .
+      dockerfile: blazor.dockerfile
+    ports:
+      - "8000:8000"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+
+  react-frontend:
+    build:
+      context: .
+      dockerfile: frontend.dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - react-backend
+    restart: unless-stopped
+
+  react-backend:
+    build:
+      context: .
+      dockerfile: backend.dockerfile
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
